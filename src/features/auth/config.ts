@@ -1,8 +1,7 @@
-import NextAuth from 'next-auth'
+import NextAuth, { type NextAuthConfig } from 'next-auth'
 import { githubProvider } from './providers/github'
 
-export const authConfig = {
-  enabled: false, // Set to true to enable
+const nextAuthConfig: NextAuthConfig = {
   providers: [
     // Uncomment providers as needed
     // githubProvider,
@@ -21,6 +20,11 @@ export const authConfig = {
       return true
     },
   },
+}
+
+export const authConfig = {
+  enabled: false, // Set to true to enable
+  ...nextAuthConfig,
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authConfig)
