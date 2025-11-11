@@ -1,10 +1,18 @@
-import { Button } from '@/components/ui'
+import { Header, Footer } from '@/components/layout'
+import { Hero, NewsletterSection } from '@/components/marketing'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="mb-8 text-4xl font-bold">Starter Template</h1>
-      <Button>Click me</Button>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero
+          title="Welcome to Starter"
+          subtitle="A production-ready Next.js template for building landing pages with ease."
+        />
+        <NewsletterSection />
+      </main>
+      <Footer />
+    </>
   )
 }
