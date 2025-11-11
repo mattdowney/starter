@@ -21,7 +21,7 @@ export async function subscribeToNewsletter(
     if (!result.success) {
       return {
         success: false,
-        message: result.error.errors[0].message,
+        message: result.error.issues[0].message,
       }
     }
 
