@@ -9,9 +9,7 @@ export function Header() {
           <Link href="/" className="text-xl font-bold">
             Starter
           </Link>
-          <nav className="flex gap-6">
-            {/* Add navigation links here */}
-          </nav>
+          <nav className="flex gap-6">{/* Add navigation links here */}</nav>
         </div>
       </Container>
     </header>

@@ -5,7 +5,8 @@ dotenv.config({ path: '.env.local' })
 
 // Use a placeholder URL for migration generation if not set
 const databaseUrl =
-  process.env.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder'
+  process.env.DATABASE_URL ||
+  'postgresql://placeholder:placeholder@localhost:5432/placeholder'
 
 export default {
   schema: './src/lib/db/schema.ts',
