@@ -1,19 +1,23 @@
 # Starter
 
-A production-ready Next.js 14 starter template for building landing pages with pluggable features.
+A production-ready Next.js 16 starter template for building landing pages with pluggable features.
 
 ## Features
 
-- ✅ **Next.js 14** - App Router, Server Components, Server Actions
-- ✅ **TypeScript** - Full type safety
-- ✅ **Tailwind CSS** - Utility-first styling with custom design tokens
+- ✅ **Next.js 16** - App Router, Server Components, Server Actions, Turbopack
+- ✅ **TypeScript 5** - Strict mode, full type safety
+- ✅ **Tailwind CSS v4** - CSS-first configuration, 5x faster builds
 - ✅ **Shadcn/ui** - Beautiful, accessible components
-- ✅ **Newsletter** - Email capture with Resend integration
 - ✅ **Database** - Neon Postgres with Drizzle ORM
+- ✅ **Email** - Resend + React Email templates
 - ✅ **Analytics** - Vercel Analytics built-in
-- ✅ **Auth Ready** - NextAuth.js configured (inactive by default)
+- ✅ **Auth Ready** - NextAuth.js v5 configured (inactive by default)
+- ✅ **Testing** - Vitest + React Testing Library
+- ✅ **Env Validation** - Type-safe environment variables with Zod
+- ✅ **Toast Notifications** - Sonner for user feedback
+- ✅ **CI/CD** - GitHub Actions pipeline
 - ✅ **MDX Support** - For long-form content
-- ✅ **ESLint + Prettier** - Code quality and formatting
+- ✅ **Code Quality** - ESLint 9, Prettier, Husky pre-commit hooks
 
 ## Quick Start
 
@@ -70,17 +74,20 @@ starter/
 │   ├── features/             # Pluggable features
 │   │   ├── newsletter/       # Email capture
 │   │   ├── analytics/        # Vercel Analytics
-│   │   └── auth/            # NextAuth (inactive)
+│   │   └── auth/             # NextAuth (inactive)
 │   ├── components/
-│   │   ├── ui/              # Wrapped Shadcn components
-│   │   ├── layout/          # Layout components
-│   │   └── marketing/       # Landing page components
+│   │   ├── ui/               # Wrapped Shadcn components
+│   │   ├── layout/           # Layout components
+│   │   └── marketing/        # Landing page components
 │   ├── lib/
-│   │   ├── db/              # Database client & schema
-│   │   └── email/           # Email client & templates
-│   └── content/             # MDX content files
-├── docs/                    # Documentation
-└── public/                  # Static assets
+│   │   ├── db/               # Database client & schema
+│   │   └── email/            # Email client & templates
+│   ├── test/                 # Test setup
+│   ├── content/              # MDX content files
+│   └── env.ts                # Environment validation
+├── .github/workflows/        # CI/CD pipeline
+├── docs/                     # Documentation
+└── public/                   # Static assets
 ```
 
 ## Features Guide
@@ -141,6 +148,39 @@ Auth is configured but inactive by default.
 
 3. Uncomment providers as needed
 
+### Toast Notifications
+
+Sonner is configured globally in the root layout.
+
+```tsx
+import { toast } from 'sonner'
+
+// Success
+toast.success('Changes saved!')
+
+// Error
+toast.error('Something went wrong')
+
+// Promise
+toast.promise(saveData(), {
+  loading: 'Saving...',
+  success: 'Saved!',
+  error: 'Failed to save',
+})
+```
+
+## Testing
+
+Run tests with Vitest:
+
+```bash
+pnpm test           # Run once
+pnpm test:watch     # Watch mode
+pnpm test:coverage  # With coverage
+```
+
+Tests are located alongside source files (`*.test.ts`) or in `src/test/`.
+
 ## Database Management
 
 ### Generate Migrations
@@ -167,15 +207,20 @@ Opens Drizzle Studio at `http://localhost:4983`
 
 ## Scripts
 
-- `pnpm dev` - Start development server
-- `pnpm build` - Build for production
-- `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint
-- `pnpm format` - Format code with Prettier
-- `pnpm type-check` - Run TypeScript compiler
-- `pnpm db:generate` - Generate migrations
-- `pnpm db:push` - Push schema to database
-- `pnpm db:studio` - Open Drizzle Studio
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production |
+| `pnpm start` | Start production server |
+| `pnpm test` | Run tests |
+| `pnpm test:watch` | Run tests in watch mode |
+| `pnpm test:coverage` | Run tests with coverage |
+| `pnpm lint` | Run ESLint |
+| `pnpm type-check` | Run TypeScript compiler |
+| `pnpm format` | Format code with Prettier |
+| `pnpm db:generate` | Generate migrations |
+| `pnpm db:push` | Push schema to database |
+| `pnpm db:studio` | Open Drizzle Studio |
 
 ## Deployment
 
@@ -199,7 +244,7 @@ Requirements:
 
 ### Design Tokens
 
-Edit `tailwind.config.ts` and `src/app/globals.css` to customize colors, spacing, typography.
+Edit `src/app/globals.css` to customize colors, spacing, and typography. Tailwind v4 uses CSS-first configuration with `@theme inline` blocks.
 
 ### Components
 
@@ -232,16 +277,30 @@ Add new features in `src/features/`:
 
 ## Tech Stack
 
-- **Framework:** [Next.js 14](https://nextjs.org)
-- **Language:** [TypeScript](https://www.typescriptlang.org)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com)
-- **Components:** [Shadcn/ui](https://ui.shadcn.com)
-- **Database:** [Neon](https://neon.tech) + [Drizzle ORM](https://orm.drizzle.team)
-- **Email:** [Resend](https://resend.com)
-- **Auth:** [NextAuth.js](https://next-auth.js.org)
-- **Analytics:** [Vercel Analytics](https://vercel.com/analytics)
-- **Forms:** [React Hook Form](https://react-hook-form.com)
-- **Validation:** [Zod](https://zod.dev)
+| Category | Technology |
+|----------|------------|
+| **Framework** | [Next.js 16](https://nextjs.org) + [React 19](https://react.dev) |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com) + [Shadcn/ui](https://ui.shadcn.com) |
+| **Database** | [Neon Postgres](https://neon.tech) + [Drizzle ORM](https://orm.drizzle.team) |
+| **Email** | [Resend](https://resend.com) + [React Email](https://react.email) |
+| **Auth** | [NextAuth.js v5](https://authjs.dev) |
+| **Forms** | [React Hook Form](https://react-hook-form.com) + [Zod v4](https://zod.dev) |
+| **Testing** | [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) |
+| **Env Validation** | [@t3-oss/env-nextjs](https://env.t3.gg) |
+| **Toast** | [Sonner](https://sonner.emilkowal.ski) |
+| **Analytics** | [Vercel Analytics](https://vercel.com/analytics) |
+| **CI/CD** | [GitHub Actions](https://github.com/features/actions) |
+| **Linting** | [ESLint 9](https://eslint.org) + [Prettier](https://prettier.io) |
+
+## CI/CD
+
+GitHub Actions runs on every push/PR to `main`:
+
+1. **Lint** - ESLint checks
+2. **Type Check** - TypeScript validation
+3. **Test** - Vitest test suite
+4. **Build** - Production build verification
 
 ## License
 

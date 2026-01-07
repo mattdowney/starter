@@ -25,10 +25,10 @@ export default function WelcomeEmail({ email }: WelcomeEmailProps) {
               Thanks for subscribing to our newsletter at {email}.
             </Text>
             <Text style={text}>
-              We'll keep you updated with the latest news and updates.
+              We&apos;ll keep you updated with the latest news and updates.
             </Text>
             <Text style={footer}>
-              If you didn't sign up for this, you can{' '}
+              If you didn&apos;t sign up for this, you can{' '}
               <Link href="#" style={link}>
                 unsubscribe here
               </Link>

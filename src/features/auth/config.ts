@@ -1,9 +1,9 @@
 import NextAuth, { type NextAuthConfig } from 'next-auth'
-import { githubProvider } from './providers/github'
+// Uncomment to enable GitHub OAuth:
+// import { githubProvider } from './providers/github'
 
 const nextAuthConfig: NextAuthConfig = {
   providers: [
-    // Uncomment providers as needed
     // githubProvider,
   ],
   pages: {

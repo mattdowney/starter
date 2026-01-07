@@ -185,29 +185,33 @@ NextAuth.js v5 configured but inactive:
 
 ## Styling System
 
-### Tailwind + CSS Variables
+### Tailwind v4 CSS-First Configuration
 
-Design tokens defined as CSS variables:
+Design tokens defined in `globals.css` using CSS variables and `@theme inline`:
 
 ```css
 :root {
-  --primary: 222.2 47.4% 11.2%;
+  --primary: hsl(222.2 47.4% 11.2%);
   --radius: 0.5rem;
 }
-```
 
-Used in Tailwind config:
-
-```typescript
-colors: {
-  primary: 'hsl(var(--primary))'
+@theme inline {
+  --color-primary: var(--primary);
+  --radius-lg: var(--radius);
 }
 ```
 
+This v4 approach:
+- Eliminates the need for `tailwind.config.ts`
+- Uses `@import 'tailwindcss'` instead of `@tailwind` directives
+- Loads plugins via `@plugin '@tailwindcss/typography'`
+- Provides CSS variables for all theme tokens
+
 Benefits:
-- Runtime theme switching
-- Dark mode support
-- Consistent across components
+- 5x faster full builds, 100x faster incremental builds
+- Runtime theme switching via CSS variables
+- Dark mode support via `.dark` class
+- Auto-detection of content files (no config needed)
 
 ## Performance Considerations
 

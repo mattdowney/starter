@@ -15,7 +15,7 @@ export function NewsletterSection({
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
-          <p className="mt-4 text-lg text-muted-foreground">{description}</p>
+          <p className="text-muted-foreground mt-4 text-lg">{description}</p>
           <div className="mt-8 flex justify-center">
             <NewsletterForm />
           </div>

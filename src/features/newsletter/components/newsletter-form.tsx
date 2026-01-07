@@ -28,7 +28,7 @@ export function NewsletterForm() {
         </div>
 
         {form.formState.errors.email && (
-          <p className="text-sm text-destructive">
+          <p className="text-destructive text-sm">
             {form.formState.errors.email.message}
           </p>
         )}
